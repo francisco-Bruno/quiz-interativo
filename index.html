@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Interativo</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Quiz</h1>
+
+    <div id="menu">
+        <p>Escolha um tema:</p>
+        <button onclick="iniciarQuiz('js')">Lógica (JavaScript)</button>
+        <button onclick="iniciarQuiz('html')">HTML</button>
+        <button onclick="iniciarQuiz('css')">CSS</button>
+    </div>
+
+    <div id="quiz" style="display:none;">
+        <div id="pergunta"></div>
+        <div id="opcoes"></div>
+        <button onclick="proximaPergunta()">Próxima</button>
+        <div id="resultado"></div>
+    </div>
+</div>
+
+<script src="src/js/script.js"></script>
+</body>
+</html>
