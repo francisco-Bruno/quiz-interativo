@@ -1,7 +1,7 @@
-let perguntas = [];
-let indice = 0;
-let pontuacao = 0;
-let pontuacaoTotal = 0; // fica só na execução atual
+let perguntas = []
+let indice = 0
+let pontuacao = 0
+let pontuacaoTotal = 0
 
 const quizJS = [
     {
@@ -14,7 +14,7 @@ const quizJS = [
         opcoes: ["=", "==", "+"],
         correta: 1
     }
-];
+]
 
 const quizHTML = [
     {
@@ -27,7 +27,7 @@ const quizHTML = [
         opcoes: ["&lt;a&gt;", "&lt;link&gt;", "&lt;href&gt;"],
         correta: 0
     }
-];
+]
 
 const quizCSS = [
     {
@@ -40,28 +40,28 @@ const quizCSS = [
         opcoes: ["#", ".", "*"],
         correta: 1
     }
-];
+]
 
 function iniciarQuiz(tipo) {
-    if (tipo === "js") perguntas = quizJS;
-    if (tipo === "html") perguntas = quizHTML;
-    if (tipo === "css") perguntas = quizCSS;
+    if (tipo === "js") perguntas = quizJS
+    if (tipo === "html") perguntas = quizHTML
+    if (tipo === "css") perguntas = quizCSS
 
-    indice = 0;
-    pontuacao = 0;
+    indice = 0
+    pontuacao = 0
 
-    document.getElementById("menu").style.display = "none";
-    document.getElementById("quiz").style.display = "block";
+    document.getElementById("menu").style.display = "none"
+    document.getElementById("quiz").style.display = "block"
 
-    mostrarPergunta();
+    mostrarPergunta()
 }
 
 function mostrarPergunta() {
-    const p = perguntas[indice];
+    const p = perguntas[indice]
     document.getElementById("pergunta").innerText = p.pergunta;
 
-    const opcoesDiv = document.getElementById("opcoes");
-    opcoesDiv.innerHTML = "";
+    const opcoesDiv = document.getElementById("opcoes")
+    opcoesDiv.innerHTML = ""
 
     for (let i = 0; i < p.opcoes.length; i++) {
         opcoesDiv.innerHTML += `
@@ -74,7 +74,7 @@ function mostrarPergunta() {
 }
 
 function proximaPergunta() {
-    const selecionada = document.querySelector('input[name="opcao"]:checked');
+    const selecionada = document.querySelector('input[name="opcao"]:checked')
 
     if (selecionada) {
         if (parseInt(selecionada.value) === perguntas[indice].correta) {
@@ -85,29 +85,29 @@ function proximaPergunta() {
     indice++;
 
     if (indice < perguntas.length) {
-        mostrarPergunta();
+        mostrarPergunta()
     } else {
-        finalizarQuiz();
+        finalizarQuiz()
     }
 }
 
 function finalizarQuiz() {
-    pontuacaoTotal += pontuacao;
+    pontuacaoTotal += pontuacao
 
-    alert("Você fez " + pontuacao + " pontos.\nTotal acumulado: " + pontuacaoTotal);
+    alert("Você fez " + pontuacao + " pontos.\nTotal acumulado: " + pontuacaoTotal)
 
-    document.getElementById("quiz").style.display = "none";
-    document.getElementById("menu").style.display = "block";
+    document.getElementById("quiz").style.display = "none"
+    document.getElementById("menu").style.display = "block"
 
-    mostrarPontuacaoTotal();
+    mostrarPontuacaoTotal()
 }
 
 function mostrarPontuacaoTotal() {
-    let div = document.getElementById("pontuacaoTotal");
+    let div = document.getElementById("pontuacaoTotal")
 
     if (!div) {
-        div = document.createElement("div");
-        div.id = "pontuacaoTotal";
+        div = document.createElement("div")
+        div.id = "pontuacaoTotal"
         document.getElementById("menu").appendChild(div);
     }
 
